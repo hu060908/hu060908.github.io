@@ -16,6 +16,7 @@
                     <li><a href="#home">首页</a></li>
                     <li><a href="#about">关于我</a></li>
                     <li><a href="#skills">我的技能</a></li>
+                    <li><a href="#games">我的游戏</a></li>
                     <li><a href="#contact">联系我</a></li>
                 </ul>
             </div>
@@ -27,7 +28,7 @@
         <div class="hero-content">
             <h2>欢迎来到我的个人空间</h2>
             <p>我是热爱技术与创新的开发者</p>
-            <button class="cta-button">了解更多</button>
+            <button class="cta-button" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">了解更多</button>
         </div>
     </section>
 
@@ -42,9 +43,7 @@
                     <p>在工作中注重细节，追求完美的用户体验。</p>
                 </div>
                 <div class="about-image">
-                    <!-- 在这里放你的照片 -->
                     <img src="images/my-photo.jpg" alt="我的个人照片" class="profile-photo">
-                    <p class="photo-tip">
                 </div>
             </div>
         </div>
@@ -66,6 +65,61 @@
                 <div class="skill-card">
                     <h4>工具使用</h4>
                     <p>Dreamweaver, Git, VS Code</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我的游戏 -->
+    <section id="games" class="games">
+        <div class="container">
+            <h3>我的游戏</h3>
+            <p class="section-subtitle">这些是我喜爱的游戏作品</p>
+            
+            <div class="games-gallery">
+                <div class="game-item">
+                    <img src="images/arknights.jpg" alt="明日方舟" class="game-photo">
+                    <div class="game-info">
+                        <h4>明日方舟</h4>
+                        <p>塔防策略游戏，喜欢其精美的立绘和深度的策略性</p>
+                        <span class="game-tag">塔防策略</span>
+                    </div>
+                </div>
+                
+                <div class="game-item">
+                    <img src="images/sanguosha.jpg" alt="三国杀" class="game-photo">
+                    <div class="game-info">
+                        <h4>三国杀</h4>
+                        <p>经典卡牌游戏，享受智谋对决和角色扮演的乐趣</p>
+                        <span class="game-tag">卡牌策略</span>
+                    </div>
+                </div>
+                
+                <div class="game-item">
+                    <img src="images/lol.jpg" alt="英雄联盟" class="game-photo">
+                    <div class="game-info">
+                        <h4>英雄联盟</h4>
+                        <p>团队竞技游戏，喜欢与朋友一起配合，体验激烈的对战</p>
+                        <span class="game-tag">MOBA</span>
+                    </div>
+                </div>
+
+                <div class="game-item">
+                    <img src="images/cs2.jpg" alt="CS2" class="game-photo">
+                    <div class="game-info">
+                        <h4>CS2</h4>
+                        <p>经典射击游戏，考验反应速度和团队战术配合</p>
+                        <span class="game-tag">FPS射击</span>
+                    </div>
+                </div>
+
+                <div class="game-item">
+                    <img src="images/delta-action.jpg" alt="三角洲行动" class="game-photo">
+                    <div class="game-info">
+                        <h4>三角洲行动</h4>
+                        <p>战术射击游戏，体验真实的战场环境和团队作战</p>
+                        <span class="game-tag">战术射击</span>
+                    </div>
                 </div>
             </div>
         </div>
