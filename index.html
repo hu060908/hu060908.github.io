@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人网站</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">我的站点</h1>
+                <ul class="nav-menu">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#skills">我的技能</a></li>
+                    <li><a href="#contact">联系我</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主页横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>欢迎来到我的个人空间</h2>
+            <p>我是热爱技术与创新的开发者</p>
+            <button class="cta-button">了解更多</button>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h3>关于我</h3>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>你好！我是一名充满热情的网页开发者，专注于创建美观且功能强大的网站。</p>
+                    <p>热爱学习新技术，享受将创意转化为现实的过程。</p>
+                    <p>在工作中注重细节，追求完美的用户体验。</p>
+                </div>
+                <div class="about-image">
+                    <!-- 在这里放你的照片 -->
+                    <img src="images/my-photo.jpg" alt="我的个人照片" class="profile-photo">
+                    <p class="photo-tip">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我的技能 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h3>我的技能</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>网页设计</h4>
+                    <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <h4>前端开发</h4>
+                    <p>响应式设计, UI/UX</p>
+                </div>
+                <div class="skill-card">
+                    <h4>工具使用</h4>
+                    <p>Dreamweaver, Git, VS Code</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h3>联系我</h3>
+            <form class="contact-form">
+                <input type="text" placeholder="您的姓名" required>
+                <input type="email" placeholder="您的邮箱" required>
+                <textarea placeholder="您的留言" rows="5" required></textarea>
+                <button type="submit">发送消息</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 我的个人网站. 版权所有.</p>
+        </div>
+    </footer>
+</body>
+</html>
