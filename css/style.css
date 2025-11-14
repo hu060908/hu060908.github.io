@@ -183,6 +183,79 @@ body {
     font-size: 1.3rem;
 }
 
+/* 游戏展示部分 */
+.games {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.games h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.games-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.game-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.game-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 游戏图片统一尺寸样式 */
+.game-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.game-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.game-info h4 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.game-info p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.game-tag {
+    background: #667eea;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 /* 联系表单 */
 .contact {
     padding: 80px 0;
@@ -259,7 +332,15 @@ footer {
         grid-template-columns: 1fr;
     }
     
+    .games-gallery {
+        grid-template-columns: 1fr;
+    }
+    
     .profile-photo {
         max-width: 300px;
+    }
+    
+    .game-photo {
+        height: 180px;
     }
 }
