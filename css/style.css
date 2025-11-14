@@ -262,12 +262,7 @@ footer {
         max-width: 300px;
     }
 }
-.profile-photo {
-    border: 5px solid red !important;
-    width: 200px !important;
-    height: 200px !important;
-    display: block !important;
-}
+
 /* 游戏展示部分 */
 .games {
     padding: 80px 0;
