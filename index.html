@@ -28,7 +28,8 @@
         <div class="hero-content">
             <h2>欢迎来到我的个人空间</h2>
             <p>我是热爱技术与创新的开发者</p>
-            <button class="cta-button" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">了解更多</button>
+            <!-- 修改这里：添加弹窗功能 -->
+            <button class="cta-button" onclick="showDevelopmentPopup()">了解更多</button>
         </div>
     </section>
 
@@ -144,5 +145,38 @@
             <p>&copy; 2025 我的个人网站. 版权所有.</p>
         </div>
     </footer>
+
+    <!-- 弹窗结构 -->
+    <div id="developmentPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closeDevelopmentPopup()">&times;</span>
+            <h3>🚧 功能开发中</h3>
+            <p>这个功能正在紧锣密鼓地开发中，敬请期待！</p>
+            <div class="popup-buttons">
+                <button onclick="closeDevelopmentPopup()" class="popup-confirm">知道了</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 显示开发中弹窗
+        function showDevelopmentPopup() {
+            document.getElementById('developmentPopup').style.display = 'flex';
+        }
+
+        // 关闭弹窗
+        function closeDevelopmentPopup() {
+            document.getElementById('developmentPopup').style.display = 'none';
+        }
+
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            const popup = document.getElementById('developmentPopup');
+            if (event.target === popup) {
+                closeDevelopmentPopup();
+            }
+        }
+    </script>
 </body>
 </html>
