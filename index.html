@@ -13,20 +13,46 @@
             <div class="nav-container">
                 <h1 class="nav-logo">我的站点</h1>
                 
-                <!-- 汉堡菜单按钮 - 始终显示 -->
+                <!-- 汉堡菜单按钮 -->
                 <div class="hamburger-menu" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
                 
-                <!-- 下拉菜单 -->
-                <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="#home" onclick="closeMenu()">首页</a>
-                    <a href="#about" onclick="closeMenu()">关于我</a>
-                    <a href="#skills" onclick="closeMenu()">我的技能</a>
-                    <a href="#games" onclick="closeMenu()">我的游戏</a>
-                    <a href="#contact" onclick="closeMenu()">联系我</a>
+                <!-- 全屏菜单 -->
+                <div class="fullscreen-menu" id="fullscreenMenu">
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h2>导航菜单</h2>
+                            <span class="close-menu" onclick="closeMenu()">&times;</span>
+                        </div>
+                        <div class="menu-items">
+                            <a href="#home" onclick="closeMenu()" class="menu-item">
+                                <span class="menu-icon">🏠</span>
+                                <span class="menu-text">首页</span>
+                            </a>
+                            <a href="#about" onclick="closeMenu()" class="menu-item">
+                                <span class="menu-icon">👤</span>
+                                <span class="menu-text">关于我</span>
+                            </a>
+                            <a href="#skills" onclick="closeMenu()" class="menu-item">
+                                <span class="menu-icon">💡</span>
+                                <span class="menu-text">我的技能</span>
+                            </a>
+                            <a href="#games" onclick="closeMenu()" class="menu-item">
+                                <span class="menu-icon">🎮</span>
+                                <span class="menu-text">我的游戏</span>
+                            </a>
+                            <a href="#contact" onclick="closeMenu()" class="menu-item">
+                                <span class="menu-icon">📞</span>
+                                <span class="menu-text">联系我</span>
+                            </a>
+                        </div>
+                        <div class="menu-footer">
+                            <p>欢迎浏览我的个人空间</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -189,28 +215,30 @@
             document.getElementById('developmentPopup').style.display = 'none';
         }
 
-        // 切换菜单显示/隐藏
+        // 切换全屏菜单显示/隐藏
         function toggleMenu() {
-            const dropdownMenu = document.getElementById('dropdownMenu');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
             const hamburger = document.querySelector('.hamburger-menu');
-            dropdownMenu.classList.toggle('active');
+            fullscreenMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : '';
         }
 
         // 关闭菜单
         function closeMenu() {
-            const dropdownMenu = document.getElementById('dropdownMenu');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
             const hamburger = document.querySelector('.hamburger-menu');
-            dropdownMenu.classList.remove('active');
+            fullscreenMenu.classList.remove('active');
             hamburger.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // 点击页面其他位置关闭菜单
         document.addEventListener('click', function(event) {
-            const dropdownMenu = document.getElementById('dropdownMenu');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
             const hamburger = document.querySelector('.hamburger-menu');
             
-            if (!event.target.closest('.nav-container') && dropdownMenu.classList.contains('active')) {
+            if (!event.target.closest('.nav-container') && fullscreenMenu.classList.contains('active')) {
                 closeMenu();
             }
         });
@@ -222,11 +250,16 @@
                 closeDevelopmentPopup();
             }
         }
+
+        // ESC键关闭菜单
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
     </script>
 </body>
 </html>
-    </script>
-</body>
-</html>
+
 
 
