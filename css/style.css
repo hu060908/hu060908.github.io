@@ -43,13 +43,14 @@ body {
     font-weight: bold;
 }
 
-/* 汉堡菜单样式 */
+/* 汉堡菜单样式 - 始终显示 */
 .hamburger-menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
     z-index: 1001;
+    transition: all 0.3s ease;
 }
 
 .hamburger-menu span {
@@ -61,9 +62,20 @@ body {
     border-radius: 2px;
 }
 
+/* 汉堡菜单悬停效果 */
+.hamburger-menu:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 5px;
+}
+
+.hamburger-menu:hover span {
+    background: #667eea;
+}
+
 /* 汉堡菜单动画 */
 .hamburger-menu.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
+    background: #667eea;
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -72,27 +84,50 @@ body {
 
 .hamburger-menu.active span:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
+    background: #667eea;
 }
 
-/* 导航菜单 */
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
+/* 下拉菜单 */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 0.5rem 0;
 }
 
-.nav-menu a {
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.nav-menu a:hover {
-    color: #667eea;
-    background: rgba(102, 126, 234, 0.1);
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: #667eea;
+    color: white;
+    padding-left: 25px;
 }
 
 /* 主页横幅 - 使用照片背景 */
@@ -488,50 +523,6 @@ footer {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-    /* 汉堡菜单 */
-    .hamburger-menu {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        gap: 0;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .nav-menu li {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .nav-menu a {
-        display: block;
-        padding: 1rem 2rem;
-        width: 100%;
-    }
-    
-    .nav-menu a:hover {
-        background: #667eea;
-        color: white;
-    }
-    
-    /* 其他响应式样式 */
     .hero-content h2 {
         font-size: 2.5rem;
     }
@@ -567,6 +558,11 @@ footer {
     /* 移动端取消背景固定 */
     .hero {
         background-attachment: scroll;
+    }
+    
+    /* 移动端下拉菜单宽度调整 */
+    .dropdown-menu {
+        min-width: 180px;
     }
 }
 
