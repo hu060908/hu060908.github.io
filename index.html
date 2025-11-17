@@ -12,12 +12,21 @@
         <nav class="navbar">
             <div class="nav-container">
                 <h1 class="nav-logo">我的站点</h1>
-                <ul class="nav-menu">
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#about">关于我</a></li>
-                    <li><a href="#skills">我的技能</a></li>
-                    <li><a href="#games">我的游戏</a></li>
-                    <li><a href="#contact">联系我</a></li>
+                
+                <!-- 汉堡菜单按钮 -->
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <!-- 导航菜单 -->
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" onclick="closeMenu()">首页</a></li>
+                    <li><a href="#about" onclick="closeMenu()">关于我</a></li>
+                    <li><a href="#skills" onclick="closeMenu()">我的技能</a></li>
+                    <li><a href="#games" onclick="closeMenu()">我的游戏</a></li>
+                    <li><a href="#contact" onclick="closeMenu()">联系我</a></li>
                 </ul>
             </div>
         </nav>
@@ -180,11 +189,34 @@
             document.getElementById('developmentPopup').style.display = 'none';
         }
 
+        // 切换菜单显示/隐藏
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger-menu');
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // 关闭菜单
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger-menu');
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
         // 点击弹窗外部关闭
         window.onclick = function(event) {
             const popup = document.getElementById('developmentPopup');
             if (event.target === popup) {
                 closeDevelopmentPopup();
+            }
+            
+            // 点击菜单外部关闭菜单
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger-menu');
+            if (!event.target.closest('.nav-container') && navMenu.classList.contains('active')) {
+                closeMenu();
             }
         }
     </script>
