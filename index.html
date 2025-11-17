@@ -13,21 +13,21 @@
             <div class="nav-container">
                 <h1 class="nav-logo">我的站点</h1>
                 
-                <!-- 汉堡菜单按钮 -->
+                <!-- 汉堡菜单按钮 - 始终显示 -->
                 <div class="hamburger-menu" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
                 
-                <!-- 导航菜单 -->
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" onclick="closeMenu()">首页</a></li>
-                    <li><a href="#about" onclick="closeMenu()">关于我</a></li>
-                    <li><a href="#skills" onclick="closeMenu()">我的技能</a></li>
-                    <li><a href="#games" onclick="closeMenu()">我的游戏</a></li>
-                    <li><a href="#contact" onclick="closeMenu()">联系我</a></li>
-                </ul>
+                <!-- 下拉菜单 -->
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#home" onclick="closeMenu()">首页</a>
+                    <a href="#about" onclick="closeMenu()">关于我</a>
+                    <a href="#skills" onclick="closeMenu()">我的技能</a>
+                    <a href="#games" onclick="closeMenu()">我的游戏</a>
+                    <a href="#contact" onclick="closeMenu()">联系我</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -191,19 +191,29 @@
 
         // 切换菜单显示/隐藏
         function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
+            const dropdownMenu = document.getElementById('dropdownMenu');
             const hamburger = document.querySelector('.hamburger-menu');
-            navMenu.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         }
 
         // 关闭菜单
         function closeMenu() {
-            const navMenu = document.getElementById('navMenu');
+            const dropdownMenu = document.getElementById('dropdownMenu');
             const hamburger = document.querySelector('.hamburger-menu');
-            navMenu.classList.remove('active');
+            dropdownMenu.classList.remove('active');
             hamburger.classList.remove('active');
         }
+
+        // 点击页面其他位置关闭菜单
+        document.addEventListener('click', function(event) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const hamburger = document.querySelector('.hamburger-menu');
+            
+            if (!event.target.closest('.nav-container') && dropdownMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
 
         // 点击弹窗外部关闭
         window.onclick = function(event) {
@@ -211,14 +221,12 @@
             if (event.target === popup) {
                 closeDevelopmentPopup();
             }
-            
-            // 点击菜单外部关闭菜单
-            const navMenu = document.getElementById('navMenu');
-            const hamburger = document.querySelector('.hamburger-menu');
-            if (!event.target.closest('.nav-container') && navMenu.classList.contains('active')) {
-                closeMenu();
-            }
         }
     </script>
 </body>
 </html>
+        }
+    </script>
+</body>
+</html>
+
