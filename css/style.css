@@ -34,6 +34,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    position: relative;
 }
 
 .nav-logo {
@@ -42,6 +43,38 @@ body {
     font-weight: bold;
 }
 
+/* 汉堡菜单样式 */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* 汉堡菜单动画 */
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* 导航菜单 */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -53,10 +86,13 @@ body {
     color: #333;
     font-weight: 500;
     transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 .nav-menu a:hover {
     color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
 }
 
 /* 主页横幅 - 使用照片背景 */
@@ -452,15 +488,50 @@ footer {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
+    /* 汉堡菜单 */
+    .hamburger-menu {
+        display: flex;
     }
     
     .nav-menu {
-        gap: 1rem;
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
     }
     
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .nav-menu a {
+        display: block;
+        padding: 1rem 2rem;
+        width: 100%;
+    }
+    
+    .nav-menu a:hover {
+        background: #667eea;
+        color: white;
+    }
+    
+    /* 其他响应式样式 */
     .hero-content h2 {
         font-size: 2.5rem;
     }
@@ -496,5 +567,16 @@ footer {
     /* 移动端取消背景固定 */
     .hero {
         background-attachment: scroll;
+    }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1200px) {
+    .hero-content h2 {
+        font-size: 4rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.5rem;
     }
 }
