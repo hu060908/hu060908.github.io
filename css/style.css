@@ -43,7 +43,7 @@ body {
     font-weight: bold;
 }
 
-/* 汉堡菜单样式 - 始终显示 */
+/* 汉堡菜单样式 */
 .hamburger-menu {
     display: flex;
     flex-direction: column;
@@ -87,47 +87,119 @@ body {
     background: #667eea;
 }
 
-/* 下拉菜单 */
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    min-width: 200px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    border-radius: 10px;
+/* 全屏菜单样式 */
+.fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    padding: 0.5rem 0;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.dropdown-menu.active {
+.fullscreen-menu.active {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
 }
 
-.dropdown-menu a {
-    display: block;
-    padding: 12px 20px;
+.menu-content {
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    width: 90%;
+    animation: menuFadeIn 0.6s ease;
+}
+
+@keyframes menuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.menu-header h2 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.close-menu {
+    font-size: 3rem;
+    cursor: pointer;
+    color: rgba(255,255,255,0.8);
+    transition: color 0.3s ease;
+}
+
+.close-menu:hover {
+    color: white;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.2rem 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
     text-decoration: none;
-    color: #333;
+    color: white;
+    font-size: 1.3rem;
     font-weight: 500;
     transition: all 0.3s ease;
-    border-bottom: 1px solid #f0f0f0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
-.dropdown-menu a:last-child {
-    border-bottom: none;
+.menu-item:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.dropdown-menu a:hover {
-    background: #667eea;
-    color: white;
-    padding-left: 25px;
+.menu-icon {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.menu-text {
+    flex: 1;
+    text-align: left;
+}
+
+.menu-footer {
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 2rem;
+}
+
+.menu-footer p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
 }
 
 /* 主页横幅 - 使用照片背景 */
@@ -560,9 +632,18 @@ footer {
         background-attachment: scroll;
     }
     
-    /* 移动端下拉菜单宽度调整 */
-    .dropdown-menu {
-        min-width: 180px;
+    /* 移动端菜单调整 */
+    .menu-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .menu-item {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    .menu-icon {
+        font-size: 1.3rem;
     }
 }
 
